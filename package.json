@@ -1,0 +1,30 @@
+{
+  "name": "ensure-function",
+  "version": "1.0.0",
+  "description": "Attempt to transform the input into a valid function",
+  "author": "Stephen Belanger <admin@stephenbelanger.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Qard/ensure-function#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qard/ensure-function.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qard/ensure-function/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "keywords": [
+    "ensure",
+    "function",
+    "transform"
+  ],
+  "dependencies": {
+    "recast": "^0.16.1"
+  },
+  "devDependencies": {
+    "tap": "^12.1.0"
+  }
+}
