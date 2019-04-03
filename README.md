@@ -1,5 +1,7 @@
 # ensure-function
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Qard/ensure-function.svg)](https://greenkeeper.io/)
+
 Transform JS function code, function bodies, modules, or files into valid functions using AST transform and VM wizardry.
 
 ## Install
