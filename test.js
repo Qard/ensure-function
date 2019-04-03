@@ -67,7 +67,7 @@ tests.forEach(test => {
     })
     validateFunction(t, fn)
   })
-  
+
   tap.test(`string ${test.name}`, t => {
     const fn = ensureFunction(contents, ['item'])
     validateFunction(t, fn)
@@ -75,16 +75,16 @@ tests.forEach(test => {
 })
 
 tap.test('multi-argument', t => {
-  const fn = ensureFunction('(memo || 0) + item', ['memo','item'])
+  const fn = ensureFunction('(memo || 0) + item', ['memo', 'item'])
   t.equal(typeof fn, 'function', 'returns a function')
   t.equal(fn.length, 2, 'has expected number of parameters')
-  t.equal([1,2,3].reduce(fn), 6, 'reduces to expected value')
+  t.equal([1, 2, 3].reduce(fn), 6, 'reduces to expected value')
   t.end()
 })
 
 tap.test('fail when expecting more arguments that function has', t => {
   t.throws(() => {
-    ensureFunction('function map (item) { return item.value * 2 }', ['memo','item'])
+    ensureFunction('function map (item) { return item.value * 2 }', ['memo', 'item'])
   }, /^Not enough arguments/, 'should complain about arity')
   t.end()
 })

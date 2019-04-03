@@ -21,7 +21,7 @@ function childOf (path, parent) {
   return path.parentPath.parentPath.value === parent
 }
 
-function buildFunction (contents, args,options) {
+function buildFunction (contents, args, options) {
   const ast = recast.parse(contents, options)
 
   let isExpression = false
@@ -48,7 +48,7 @@ function buildFunction (contents, args,options) {
         path.replace(buildNode.expressionStatement(expression))
         return false
       }
-  
+
       this.traverse(path)
     },
 
@@ -61,7 +61,7 @@ function buildFunction (contents, args,options) {
         }
         isExpression = true
       }
-  
+
       this.traverse(path)
     }
   })
