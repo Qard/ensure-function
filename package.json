@@ -23,7 +23,7 @@
     "transform"
   ],
   "dependencies": {
-    "recast": "^0.16.1"
+    "recast": "^0.17.5"
   },
   "devDependencies": {
     "codecov": "^3.2.0",
