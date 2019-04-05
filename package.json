@@ -1,6 +1,6 @@
 {
   "name": "ensure-function",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Attempt to transform the input into a valid function",
   "author": "Stephen Belanger <admin@stephenbelanger.com>",
   "license": "MIT",
