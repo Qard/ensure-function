@@ -40,6 +40,22 @@ var tests = [
   {
     name: 'arrow function with return',
     contents: 'return item => item.value * 2'
+  },
+  {
+    name: 'internal function',
+    contents: `
+      function square (v) {
+        return v * 2
+      }
+
+      function map (item) {
+        return square(item.value)
+      }
+    `
+  },
+  {
+    name: 'internal expression',
+    contents: 'let multiple; multiple = 2; item.value * multiple'
   }
 ]
 
@@ -68,6 +84,15 @@ tests.forEach(test => {
     validateFunction(t, fn)
   })
 
+  tap.test(`module ${test.name}`, t => {
+    const fn = ensureFunction('map.js', ['item'], {
+      require (name) {
+        return (item) => item.value * 2
+      }
+    })
+    validateFunction(t, fn)
+  })
+
   tap.test(`string ${test.name}`, t => {
     const fn = ensureFunction(contents, ['item'])
     validateFunction(t, fn)
@@ -86,5 +111,21 @@ tap.test('fail when expecting more arguments that function has', t => {
   t.throws(() => {
     ensureFunction('function map (item) { return item.value * 2 }', ['memo', 'item'])
   }, /^Not enough arguments/, 'should complain about arity')
+  t.end()
+})
+
+tap.test('fail when file contents are invalid', t => {
+  t.throws(() => {
+    ensureFunction('map.js', ['memo', 'item'], {
+      fs: {
+        existsSync () {
+          return true
+        },
+        readFileSync () {
+          return Buffer.from('_Q)(**%&^*&R')
+        }
+      }
+    })
+  }, /^Failed to parse code$/, 'should fail to parse code')
   t.end()
 })
